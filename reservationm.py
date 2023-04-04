@@ -1,42 +1,78 @@
-class Reservation:
-    """Self tables dictionary key stands for table type "single", "double" and "family", and values
-    stands for number of tables available"""
+from datetime import time
+from reserved_table import reserved_tables
 
+
+class TableReservation:
     def __init__(self):
-        self.reservations = {}
-        self.tables = {"single": 2, "double": 4, "family": 6}
+        self.reserved_tables = reserved_tables
 
-    def check_reservation(self, name):
-        if name in self.reservations:
-            print(f"Your table is reserved for table {self.reservations[name]}.")
+    def check_table_by_name(
+        self, fullname: str, num_guests: int, res_time: time
+    ) -> None:
+        for table_type, tables in self.reserved_tables.items():
+            for table_name, table in tables.items():
+                if table["name"] == fullname:
+                    print(f"Sorry, {fullname} already has a table reserved.")
+                    return
+
+    def reserve_table(self, fullname: str, num_guests: int, res_time: time) -> None:
+        if num_guests <= 2:
+            table_type = "small"
+        elif num_guests <= 10:
+            table_type = "family"
         else:
-            self.assign_table(name)
+            table_type = "large"
 
-    def assign_table(self, name):
-        if name in self.reservations:
-            return
-        size = input("What size table would you like? (single, double, or family) ")
-        while size not in self.tables:
-            size = input("Invalid size. Please choose single, double, or family. ")
-        for table in range(1, 11):
-            if table not in self.reservations.values():
-                self.reservations[name] = table
-                print(
-                    f"You have been assigned table {table} for a party of {self.tables[size]}."
-                )
-                break
-        else:
-            print("Sorry, there are no free tables available.")
+        for table_type, tables in self.reserved_tables.items():
+            for table_name, table in tables.items():
+                if table["status"] == "Available":
+                    table["name"] = fullname
+                    table["num_guests"] = num_guests
+                    table["res_time"] = res_time
+                    table["status"] = "Reserved"
+                    print(
+                        f"Table {table_type, table_name} has been reserved for {fullname}."
+                    )
+                    return
+        print("Sorry, there are no tables available.")
 
+    def get_table_status(self, name: str) -> str:
+        for table_type, tables in self.reserved_tables.items():
+            for table_name, table in tables.items():
+                if table["name"] == name:
+                    return table["status"]
+        return "Table not found."
 
-def main():
-    reservation = {"Andrius Sabaliauskas": "family"}
-    name = input("Hello, what is your full name? ")
-    type = input("What size table would you like? (single, double, or family) ")
-    while type not in reservation.tables:
-        type = input("Invalid size. Please choose single, double, or family. ")
-    reservation.check_reservation(name)
+    def get_table_num_guests(self, name: str) -> int:
+        for table_type, tables in self.reserved_tables.items():
+            for table_name, table in tables.items():
+                if table["name"] == name:
+                    return table["num_guests"]
+        return -1
+
+    def get_table_name(self, name: str) -> str:
+        for table_type, tables in self.reserved_tables.items():
+            for table_name, table in tables.items():
+                if table["name"] == name:
+                    return table_name
+        return "Table not found."
+
+    def get_table_reserved_time(self, name: str) -> time:
+        for table_type, tables in self.reserved_tables.items():
+            for table_name, table in tables.items():
+                if table["name"] == name and table["status"] == "Reserved":
+                    return table["res_time"]
+        return None
 
 
 if __name__ == "__main__":
-    main()
+    table_reservation = TableReservation()
+    fullname = input("Please enter your full name: ").upper()
+    num_guests = int(input("Please enter the number of guests: "))
+    res_time = int(input("Please enter time for reservation: "))
+    # table_reservation.reserve_table(fullname, num_guests, res_time)
+
+
+print(table_reservation.get_table_name(fullname))
+
+table_reservation.reserve_table(fullname, num_guests, res_time)
