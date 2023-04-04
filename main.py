@@ -3,4 +3,4 @@ def get_name() -> str:
     return name
 
 
-print(get_name())
+

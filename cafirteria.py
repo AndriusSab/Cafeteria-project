@@ -10,7 +10,7 @@
 # After I finish, I need to see what I chosen, the full payable amount and approx waiting time for the food to be served
 # Add an option to add tips (% from the full cost) to the final bill.
 # After the payment , system should generate the receipt (logging).
-
+from main import get_name
 
 class Reservation:
     def __init__(self):
@@ -18,7 +18,7 @@ class Reservation:
         self.tables = {"single": 5, "double": 7, "family": 10}
 
     def check_reservation(self):
-        name = input("What is your name? ")
+        name = get_name
         if name in self.reservations:
             print(f"Your table is reserved for {self.reservations[name]}")
         else:

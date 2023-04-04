@@ -1,6 +1,6 @@
 class Reservation:
     """Self tables dictionary key stands for table type "single", "double" and "family", and values
-    stands for number of available table"""
+    stands for number of tables available"""
 
     def __init__(self):
         self.reservations = {}
@@ -14,7 +14,6 @@ class Reservation:
 
     def assign_table(self, name):
         if name in self.reservations:
-            print(f"Sorry, {name} already has a reserved table.")
             return
         size = input("What size table would you like? (single, double, or family) ")
         while size not in self.tables:
@@ -31,11 +30,11 @@ class Reservation:
 
 
 def main():
-    reservation = Reservation()
+    reservation = {"Andrius Sabaliauskas": "family"}
     name = input("Hello, what is your full name? ")
-    size = input("What size table would you like? (single, double, or family) ")
-    while size not in reservation.tables:
-        size = input("Invalid size. Please choose single, double, or family. ")
+    type = input("What size table would you like? (single, double, or family) ")
+    while type not in reservation.tables:
+        type = input("Invalid size. Please choose single, double, or family. ")
     reservation.check_reservation(name)
 
 
