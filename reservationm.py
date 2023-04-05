@@ -18,10 +18,10 @@ class TableReservation:
     def reserve_table(self, fullname: str, num_guests: int, res_time: time) -> None:
         if num_guests <= 2:
             table_type = "small"
-        elif num_guests <= 2:
-            table_type = "family"
+        elif num_guests <= 4:
+            table_type = "double"
         else:
-            table_type = "large"
+            table_type = "family"
 
         for table_type, tables in self.reserved_tables.items():
             for table_name, table in tables.items():
