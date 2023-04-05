@@ -18,7 +18,7 @@ class TableReservation:
     def reserve_table(self, fullname: str, num_guests: int, res_time: time) -> None:
         if num_guests <= 2:
             table_type = "small"
-        elif num_guests <= 10:
+        elif num_guests <= 2:
             table_type = "family"
         else:
             table_type = "large"
@@ -48,7 +48,7 @@ class TableReservation:
             for table_name, table in tables.items():
                 if table["name"] == name:
                     return table["num_guests"]
-        return -1
+        raise (f"Table with name {name} not found")
 
     def get_table_name(self, name: str) -> str:
         for table_type, tables in self.reserved_tables.items():
@@ -62,7 +62,6 @@ class TableReservation:
             for table_name, table in tables.items():
                 if table["name"] == name and table["status"] == "Reserved":
                     return table["res_time"]
-        return None
 
 
 if __name__ == "__main__":
