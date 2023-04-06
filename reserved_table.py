@@ -1,7 +1,7 @@
 reserved_tables = {
     "single": {
         "1": {
-            "name": "Andrius Sabaliauskas",
+            "name": "ANDRIUS SABALIAUSKAS",
             "num_guests": 2,
             "res_time": None,
             "status": "Available",
