@@ -1,19 +1,19 @@
 reserved_tables = {
     "single": {
         "1": {
-            "name": "ANDRIUS SABALIAUSKAS",
+            "fullname": "ANDRIUS SABALIAUSKAS",
             "num_guests": 2,
             "res_time": None,
             "status": "Available",
         },
         "2": {
-            "name": "",
+            "fullname": "",
             "num_guests": 2,
             "res_time": None,
             "status": "Reserved",
         },
         "3": {
-            "name": "",
+            "fullname": "",
             "num_guests": 2,
             "res_time": None,
             "status": "Reserved",
@@ -21,19 +21,19 @@ reserved_tables = {
     },
     "double": {
         "1": {
-            "name": "",
+            "fullname": "",
             "num_guests": 4,
             "res_time": None,
             "status": "Reserved",
         },
         "2": {
-            "name": "",
+            "fullname": "",
             "num_guests": 4,
             "res_time": None,
             "status": "Reserved",
         },
         "3": {
-            "name": "",
+            "fullname": "",
             "num_guests": 4,
             "res_time": None,
             "status": "Reserved",
@@ -41,19 +41,19 @@ reserved_tables = {
     },
     "family": {
         "1": {
-            "name": "",
+            "fullname": "",
             "num_guests": 6,
             "res_time": None,
             "status": "Reserved",
         },
         "2": {
-            "name": "",
+            "fullname": "",
             "num_guests": 6,
             "res_time": None,
             "status": "Reserved",
         },
         "3": {
-            "name": "",
+            "fullname": "",
             "num_guests": 6,
             "res_time": None,
             "status": "Reserved",

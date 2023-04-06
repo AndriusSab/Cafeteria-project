@@ -10,7 +10,7 @@ class TableReservation:
         res_time = datetime.strptime(res_time, "%H:%M").time()
 
         if num_guests <= 2:
-            table_size = "small"
+            table_size = "single"
         elif num_guests in range(2, 4):
             table_size = "double"
         elif num_guests in range(5, 7):
